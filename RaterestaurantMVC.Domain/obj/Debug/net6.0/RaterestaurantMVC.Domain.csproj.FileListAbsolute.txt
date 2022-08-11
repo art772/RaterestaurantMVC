@@ -1,0 +1,12 @@
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\bin\Debug\net6.0\RaterestaurantMVC.Domain.deps.json
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\bin\Debug\net6.0\RaterestaurantMVC.Domain.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\bin\Debug\net6.0\RaterestaurantMVC.Domain.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.csproj.AssemblyReference.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.AssemblyInfoInputs.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.AssemblyInfo.cs
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.csproj.CoreCompileInputs.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\refint\RaterestaurantMVC.Domain.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\RaterestaurantMVC.Domain.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Domain\obj\Debug\net6.0\ref\RaterestaurantMVC.Domain.dll

@@ -1,0 +1,17 @@
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Application.deps.json
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Application.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Application.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Domain.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Infrastructure.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Domain.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\bin\Debug\net6.0\RaterestaurantMVC.Infrastructure.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.csproj.AssemblyReference.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.AssemblyInfoInputs.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.AssemblyInfo.cs
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.csproj.CoreCompileInputs.cache
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.csproj.CopyComplete
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\refint\RaterestaurantMVC.Application.dll
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\RaterestaurantMVC.Application.pdb
+C:\Users\art77\source\repos\RaterestaurantMVC\RaterestaurantMVC.Application\obj\Debug\net6.0\ref\RaterestaurantMVC.Application.dll
