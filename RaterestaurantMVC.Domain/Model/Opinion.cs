@@ -10,14 +10,13 @@ namespace RaterestaurantMVC.Domain.Model
     public class Opinion
     {
         public int Id { get; set; }
-        public string Title { get; set; }
         public string Content { get; set; }
         public double Rate { get; set; }
 
-        // Jedna Opinia może mieć jednego Usera
-        [ForeignKey("AppUser")]
+        //Jedna Opinia może mieć jednego Usera
+        [ForeignKey("ApplicationUser")]
         public int UserId { get; set; }
-        public virtual AppUser AppUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         // Jedna Opinia może mieć jedną Restaurację
         public int? RestaurantId { get; set; }

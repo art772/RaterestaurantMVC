@@ -13,14 +13,14 @@ namespace RaterestaurantMVC.Infrastructure
 {
     public class Context : IdentityDbContext<IdentityUser<int>, IdentityRole<int>, int>
     {
-        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Opinion> Opinions{ get; set; }
         public DbSet<Reply> Replies{ get; set; }
         public DbSet<Restaurant> Restaurants{ get; set; }
         public DbSet<RestaurantType> RestaurantType { get; set; }
         public DbSet<Type> Types { get; set; }
 
-        public Context(DbContextOptions options) : base(options)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
         }
 

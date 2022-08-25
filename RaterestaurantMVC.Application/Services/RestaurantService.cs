@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using RaterestaurantMVC.Application.Interfaces;
-using RaterestaurantMVC.Application.ViewModel.Restaurant;
+using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Interfaces;
+using RaterestaurantMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,9 @@ namespace RaterestaurantMVC.Application.Services
 
         public int AddRestaurant(NewRestaurantVm restaurant)
         {
-            throw new NotImplementedException();
+            var rest = _mapper.Map<Restaurant>(restaurant);
+            var id = _restaurantRepository.AddRestaurant(rest);
+            return id;
         }
 
         public void DeleteRestaurant(int restaurantId)
@@ -63,12 +66,10 @@ namespace RaterestaurantMVC.Application.Services
 
         public RestaurantDetailsVm GetRestaurantDetails(int restaurantId)
         {
-            //var restaurant = _restaurantRepository.GetRestaurantById(restaurantId);
-            //var restaurantVm = _mapper.Map<RestaurantDetailsVm>(restaurant);
+            var restaurant = _restaurantRepository.GetRestaurantById(restaurantId);
+            var restaurantVm = _mapper.Map<RestaurantDetailsVm>(restaurant);
 
-            //return restaurantVm;
-
-            throw new NotImplementedException();
+            return restaurantVm;
         }
     }
 }

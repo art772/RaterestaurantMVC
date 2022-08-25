@@ -1,4 +1,4 @@
-﻿@model RaterestaurantMVC.Application.ViewModel.Restaurant.ListRestaurantForListVm
+﻿@model RaterestaurantMVC.Application.ViewModels.Restaurant.ListRestaurantForListVm
 
 @{
     ViewData["Title"] = "Index";
@@ -6,9 +6,12 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Restaurator")) {
+    <p>
+        <a asp-action="AddRestaurant">Create New</a>
+    </p>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -44,7 +47,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "ViewRestaurant", new { id=item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

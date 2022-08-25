@@ -25,9 +25,9 @@ namespace RaterestaurantMVC.Domain.Model
 
 
         // Jedna Restauracja może mieć jednego Usera (Restauratora)
-        //[ForeignKey("AppUser")]
-        //public string ?RestauratorId { get; set; }
-        //public virtual AppUser ?Restaurator { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public int UserId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
         // Jedna Restauracja może mieć wiele Opinii
         public virtual ICollection<Opinion> ?Opinions { get; set; }

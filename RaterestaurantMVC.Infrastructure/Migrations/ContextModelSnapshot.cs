@@ -17,7 +17,7 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -177,12 +177,10 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -218,12 +216,10 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -250,10 +246,6 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
 
                     b.Property<int?>("RestaurantId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -335,11 +327,16 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.Property<string>("ZipCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Restaurants");
                 });
@@ -376,15 +373,20 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                     b.ToTable("Types");
                 });
 
-            modelBuilder.Entity("RaterestaurantMVC.Domain.Model.AppUser", b =>
+            modelBuilder.Entity("RaterestaurantMVC.Domain.Model.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser<int>");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue("AppUser");
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasDiscriminator().HasValue("ApplicationUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -444,13 +446,13 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                         .WithMany("Opinions")
                         .HasForeignKey("RestaurantId");
 
-                    b.HasOne("RaterestaurantMVC.Domain.Model.AppUser", "AppUser")
+                    b.HasOne("RaterestaurantMVC.Domain.Model.ApplicationUser", "ApplicationUser")
                         .WithMany("Opinions")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.Navigation("ApplicationUser");
 
                     b.Navigation("Restaurant");
                 });
@@ -464,6 +466,17 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Opinion");
+                });
+
+            modelBuilder.Entity("RaterestaurantMVC.Domain.Model.Restaurant", b =>
+                {
+                    b.HasOne("RaterestaurantMVC.Domain.Model.ApplicationUser", "ApplicationUser")
+                        .WithMany("Restaurants")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ApplicationUser");
                 });
 
             modelBuilder.Entity("RaterestaurantMVC.Domain.Model.RestaurantType", b =>
@@ -502,9 +515,11 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                     b.Navigation("RestaurantTypes");
                 });
 
-            modelBuilder.Entity("RaterestaurantMVC.Domain.Model.AppUser", b =>
+            modelBuilder.Entity("RaterestaurantMVC.Domain.Model.ApplicationUser", b =>
                 {
                     b.Navigation("Opinions");
+
+                    b.Navigation("Restaurants");
                 });
 #pragma warning restore 612, 618
         }

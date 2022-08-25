@@ -25,9 +25,16 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public IQueryable<Opinion> GetAllOpinions()
+        public IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId)
         {
-            throw new NotImplementedException();
+            var opinions = _context.Opinions.Where(i => i.Id == restaurantId);
+            return opinions;
+        }
+
+        public IQueryable<Opinion> GetAllUserOpinions(int userId)
+        {
+            var opinions = _context.Opinions.Where(i => i.Id == userId);
+            return opinions;
         }
 
         public Opinion GetOpinion(int opinionId)

@@ -1,0 +1,40 @@
+﻿@model RaterestaurantMVC.Application.ViewModels.Restaurant.RestaurantDetailsVm
+
+@{
+    ViewData["Title"] = "Restauracja";
+}
+
+<h1>Dodaj restaurację</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <img src="" alt="Obrazek restauracji" />
+    </div>
+    <div class="col-md-6">
+        <p>@Model.Name</p>
+        <p>@Model.Adress</p>
+        <p>@Model.Email</p>
+        <p>@Model.PhoneNumberFirst | @Model.PhoneNumberSecond</p>
+        <p>Ocena: @Model.AvgRate</p>
+    </div>
+    <div class="col-md-12">
+        <h4>Opinie</h4>
+        @Model.Opinions.Count
+        @foreach (var opinion in Model.Opinions)
+        {
+            <p>@opinion.Content</p>
+        }
+    </div>
+    <div class="col-md-12">
+        <partial name="~/Views/Shared/Opinion/_AddOpinionForm.cshtml" />
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Powtór do list restauracji</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

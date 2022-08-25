@@ -1,4 +1,4 @@
-﻿using RaterestaurantMVC.Application.ViewModel.Restaurant;
+﻿using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using System;
 using System.Collections.Generic;
 using System.Linq;

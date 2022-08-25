@@ -11,7 +11,7 @@ namespace RaterestaurantMVC.Domain.Interfaces
     public interface IRestaurantRepository
     {
         int AddRestaurant(Restaurant restaurant);
-        void DeleteRestaurant(int restauarntId);
+        void DeleteRestaurant(int restaurantId);
         IQueryable<Type> GetAllTypes();
         IQueryable<Restaurant> GetAllRestaurants();
         Restaurant GetRestaurantById(int restaurantId);
