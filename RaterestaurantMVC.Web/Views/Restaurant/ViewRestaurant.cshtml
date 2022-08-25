@@ -1,5 +1,4 @@
 ﻿@model RaterestaurantMVC.Application.ViewModels.Restaurant.RestaurantDetailsVm
-@*@model RaterestaurantMVC.Application.ViewModels.Opinion.ListOpinionForListVm*@
 
 @{
     ViewData["Title"] = "Restauracja";
@@ -21,11 +20,12 @@
     </div>
     <div class="col-md-12">
         <h4>Opinie</h4>
-       @* @Model.Opinions.Count
-        @foreach (var opinion in Model.Opinions)
-        {
+        @foreach(var opinion in Model.Opinions.Opinions) {
             <p>@opinion.Content</p>
-        }*@
+            <p>@opinion.Rate</p>
+        }
+
+        
     </div>
     <div class="col-md-12">
         <partial name="~/Views/Shared/Opinion/_AddOpinionForm.cshtml" />

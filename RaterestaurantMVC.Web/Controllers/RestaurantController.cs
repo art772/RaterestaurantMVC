@@ -49,7 +49,8 @@ namespace RaterestaurantMVC.Web.Controllers
         public IActionResult ViewRestaurant(int id)
         {
             var model = _restaurantService.GetRestaurantDetails(id);
-            //var modelTwo = _opinionService.GetRestaurantOpinions(id);
+            model.Opinions = _opinionService.GetRestaurantOpinions(id);
+
             return View(model);
         }
     }
