@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using RaterestaurantMVC.Application.Interfaces;
 using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Model;
+using System.Dynamic;
 
 namespace RaterestaurantMVC.Web.Controllers
 {
@@ -48,7 +49,7 @@ namespace RaterestaurantMVC.Web.Controllers
         public IActionResult ViewRestaurant(int id)
         {
             var model = _restaurantService.GetRestaurantDetails(id);
-            //model = _opinionService.GetRestaurantOpinions(id);
+            //var modelTwo = _opinionService.GetRestaurantOpinions(id);
             return View(model);
         }
     }

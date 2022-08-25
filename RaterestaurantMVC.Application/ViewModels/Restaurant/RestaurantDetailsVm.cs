@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RaterestaurantMVC.Application.ViewModels.Restaurant
 {
-    public class RestaurantDetailsVm : IMapFrom<RaterestaurantMVC.Domain.Model.Restaurant>
+    public class RestaurantDetailsVm : IMapFrom<RaterestaurantMVC.Domain.Model.Restaurant>, IMapFrom<RaterestaurantMVC.Domain.Model.Opinion>
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -24,7 +24,8 @@ namespace RaterestaurantMVC.Application.ViewModels.Restaurant
         {
             profile.CreateMap<RaterestaurantMVC.Domain.Model.Restaurant, RestaurantDetailsVm>()
                 .ForMember(s => s.Adress, opt => opt.MapFrom(d => "ul. " + d.Street + " " + d.BuildingNumber + "/" + d.FlatNumber + ", " + d.City + "" + d.ZipCode));
-            profile.CreateMap<RaterestaurantMVC.Domain.Model.Opinion, RestaurantDetailsVm>();
+            profile.CreateMap<RaterestaurantMVC.Domain.Model.Opinion, RestaurantDetailsVm>()
+                .ForMember(s => s.Opinions, opt => opt.MapFrom(d => d.Content));
         }
     }
 }

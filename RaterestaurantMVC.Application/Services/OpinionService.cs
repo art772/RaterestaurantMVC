@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using RaterestaurantMVC.Application.Interfaces;
 using RaterestaurantMVC.Application.ViewModels.Opinion;
 using RaterestaurantMVC.Application.ViewModels.Restaurant;
@@ -22,12 +23,18 @@ namespace RaterestaurantMVC.Application.Services
             _opinionRepository = opinionRepository;
             _mapper = mapper;
         }
-        public OpinionForListVm GetRestaurantOpinions(int restaurantId)
+        public ListOpinionForListVm GetRestaurantOpinions(int restaurantId)
         {
-            var opinions = _opinionRepository.GetAllRestaurantOpinions(restaurantId);
-            var opinionVm = _mapper.Map<OpinionForListVm>(opinions);
+            var opinions = _opinionRepository.GetAllRestaurantOpinions(restaurantId)
+                .ProjectTo<OpinionForListVm>(_mapper.ConfigurationProvider).ToList();
 
-            return opinionVm;
+            var opinionList = new ListOpinionForListVm()
+            {
+                Opinions = opinions,
+                Count = opinions.Count
+            };
+
+            return opinionList;
         }
         //public int AddOpinion(OpinionVm opinion)
         //{

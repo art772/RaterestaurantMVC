@@ -15,11 +15,13 @@ namespace RaterestaurantMVC.Application.Services
     public class RestaurantService : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IOpinionRepository _opinionRepository;
         private readonly IMapper _mapper;
 
-        public RestaurantService(IRestaurantRepository restaurantRepository, IMapper mapper)
+        public RestaurantService(IRestaurantRepository restaurantRepository, IOpinionRepository opinionRepository, IMapper mapper)
         {
             _restaurantRepository = restaurantRepository;
+            _opinionRepository = opinionRepository;
             _mapper = mapper;
         }
 

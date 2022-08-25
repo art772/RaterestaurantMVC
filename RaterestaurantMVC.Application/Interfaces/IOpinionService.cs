@@ -10,8 +10,9 @@ namespace RaterestaurantMVC.Application.Interfaces
 {
     public interface IOpinionService
     {
-        OpinionForListVm GetRestaurantOpinions(int restaurantId);
-        //ListOpinionForListVm GetAllOpinionsForList();
+        //OpinionForListVm GetRestaurantOpinions(int restaurantId);
+        ListOpinionForListVm GetRestaurantOpinions(int restaurantId);
+
         //int AddOpinion(OpinionVm opinion);
         //void DeleteOpinion();
     }
