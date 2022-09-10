@@ -4,12 +4,15 @@
     ViewData["Title"] = "Restauracja";
 }
 
-<h1>Dodaj restaurację</h1>
-
-<hr />
 <div class="row">
     <div class="col-md-6">
-        <img src="" alt="Obrazek restauracji" />
+        @if (@Convert.ToBase64String(Model.RestaurantPicture) != "")
+        {
+            <img src="data:image/*;base64,@(Convert.ToBase64String(Model.RestaurantPicture))" alt="Obrazek restauracji użytkownika" width="636" />
+        }
+        else {
+            <img src="~/assets/images/default-restaurant-picture.jpg" alt="Obrazek restauracji" width="636" />
+        }
     </div>
     <div class="col-md-6">
         <p>@Model.Name</p>
@@ -18,17 +21,63 @@
         <p>@Model.PhoneNumberFirst | @Model.PhoneNumberSecond</p>
         <p>Ocena: @Model.AvgRate</p>
     </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
         <h4>Opinie</h4>
-        @foreach(var opinion in Model.Opinions.Opinions) {
-            <p>@opinion.Content</p>
-            <p>@opinion.Rate</p>
+        @if (Model.Opinions.Opinions.Count() == 0) {
+            <div class="row">
+                <div class="col-md-12">
+                    <p>Brak opinii</p>
+                </div>
+            </div>
         }
-
-        
+        else {
+            @foreach (var opinion in Model.Opinions.Opinions)
+            {
+                <div class="row">
+                    <div class="col-md-2">
+                        <p>Ocena: @opinion.Rate</p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>Autor opinii</p>
+                        <p>@opinion.Content</p>
+                    </div>
+                    <div>
+                        <p>@Html.ActionLink("Delete", "DeleteOpinion", "Opinion", new { id=opinion.Id })</p>
+                    </div>
+                </div>
+            }
+        }
     </div>
+</div>
+
+<div class="row">
     <div class="col-md-12">
-        <partial name="~/Views/Shared/Opinion/_AddOpinionForm.cshtml" />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-controller="Opinion" asp-action="AddOpinion">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input asp-for="RestaurantId" value="@ViewBag.Id" type="hidden" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Content" class="control-label"></label>
+                        <input asp-for="Content" type="text" maxlength="500" class="form-control" />
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rate" class="control-label"></label>
+                        <input asp-for="Rate" type="number" min="1" max="10" class="form-control" />
+                        <span asp-validation-for="Rate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

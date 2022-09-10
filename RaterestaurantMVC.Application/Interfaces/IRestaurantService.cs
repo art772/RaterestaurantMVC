@@ -12,6 +12,8 @@ namespace RaterestaurantMVC.Application.Interfaces
         int AddRestaurant(NewRestaurantVm restaurant);
         void DeleteRestaurant(int restaurantId);
         ListRestaurantForListVm GetAllRestaurants();
+        RestaurantEditVm GetRestaurantById(int restaurantId);
+        void UpdateRestaurant(RestaurantEditVm model);
         RestaurantDetailsVm GetRestaurantDetails(int restaurantId);
     }
 }

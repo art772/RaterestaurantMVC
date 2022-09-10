@@ -1,83 +1,41 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using RaterestaurantMVC.Application.Interfaces;
+using RaterestaurantMVC.Application.ViewModels.Opinion;
+using RaterestaurantMVC.Domain.Model;
+using System.Net;
 
 namespace RaterestaurantMVC.Web.Controllers
 {
     public class OpinionController : Controller
     {
-        // GET: Opinion
-        public ActionResult Index()
+        private readonly IOpinionService _opinionService;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public OpinionController(IOpinionService opinionService, UserManager<ApplicationUser> userManager)
         {
-            return View();
+            _opinionService = opinionService;
+            _userManager = userManager;
         }
 
-        // GET: Opinion/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Opinion/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Opinion/Create
+        [Authorize]
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult AddOpinion(NewOpinionVm model)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            model.UserId = Int32.Parse(_userManager.GetUserId(User));
+            _opinionService.AddOpinion(model);
+
+            return RedirectToAction("ViewRestaurant", "Restaurant", new { id = model.RestaurantId });
         }
 
-        // GET: Opinion/Edit/5
-        public ActionResult Edit(int id)
+        [Authorize]
+        public IActionResult DeleteOpinion(int id)
         {
-            return View();
-        }
+            _opinionService.DeleteOpinion(id);
 
-        // POST: Opinion/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Opinion/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Opinion/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "Restaurant");
         }
     }
 }

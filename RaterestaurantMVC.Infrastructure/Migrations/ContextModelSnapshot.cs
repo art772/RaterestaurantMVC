@@ -304,8 +304,8 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FlatNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("FlatNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -322,6 +322,9 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
 
                     b.Property<int?>("RateSum")
                         .HasColumnType("int");
+
+                    b.Property<byte[]>("RestaurantPicture")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Street")
                         .IsRequired()

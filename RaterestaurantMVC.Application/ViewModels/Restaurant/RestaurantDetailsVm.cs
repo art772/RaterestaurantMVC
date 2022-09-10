@@ -17,13 +17,18 @@ namespace RaterestaurantMVC.Application.ViewModels.Restaurant
         public string PhoneNumberFirst { get; set; }
         public string PhoneNumberSecond { get; set; }
         public double AvgRate { get; set; }
+        public byte[] RestaurantPicture { get; set; }
+
+        public int RestaurantId { get; set; }
+        public string Content { get; set; }
+        public double Rate { get; set; }
 
         public ListOpinionForListVm Opinions { get; set; }
 
         public static void Mapping(MappingProfile profile)
         {
             profile.CreateMap<RaterestaurantMVC.Domain.Model.Restaurant, RestaurantDetailsVm>()
-                .ForMember(s => s.Adress, opt => opt.MapFrom(d => "ul. " + d.Street + " " + d.BuildingNumber + "/" + d.FlatNumber + ", " + d.City + "" + d.ZipCode));
+                .ForMember(s => s.Adress, opt => opt.MapFrom(d => "ul. " + d.Street + " " + d.BuildingNumber + "/" + d.FlatNumber + ", " + d.City + " " + d.ZipCode));
 
             profile.CreateMap<RaterestaurantMVC.Domain.Model.Opinion, RestaurantDetailsVm>();
         }

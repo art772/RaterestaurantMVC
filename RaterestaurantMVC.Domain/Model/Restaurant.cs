@@ -13,15 +13,16 @@ namespace RaterestaurantMVC.Domain.Model
         public string Name { get; set; }
         public string Street { get; set; }
         public string BuildingNumber { get; set; }
-        public int FlatNumber { get; set; }
+        public string? FlatNumber { get; set; }
         public string ZipCode { get; set; }
         public string City { get; set; }
-        public string ?Email { get; set; }
-        public string ?PhoneNumberFirst { get; set; }
-        public string ?PhoneNumberSecond { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumberFirst { get; set; }
+        public string? PhoneNumberSecond { get; set; }
         public int? RateCount { get; set; }
         public int? RateSum { get; set; }
         public double? AvgRate { get; set; }
+        public byte[]? RestaurantPicture { get; set; }
 
 
         // Jedna Restauracja może mieć jednego Usera (Restauratora)

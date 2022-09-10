@@ -27,14 +27,14 @@ namespace RaterestaurantMVC.Application.Services
 
         public int AddRestaurant(NewRestaurantVm restaurant)
         {
-            var rest = _mapper.Map<Restaurant>(restaurant);
-            var id = _restaurantRepository.AddRestaurant(rest);
+            var newRestestaurant = _mapper.Map<Restaurant>(restaurant);
+            var id = _restaurantRepository.AddRestaurant(newRestestaurant);
             return id;
         }
 
         public void DeleteRestaurant(int restaurantId)
         {
-            throw new NotImplementedException();
+            _restaurantRepository.DeleteRestaurant(restaurantId);
         }
 
         public ListRestaurantForListVm GetAllRestaurants()
@@ -49,21 +49,14 @@ namespace RaterestaurantMVC.Application.Services
             };
 
             return restaurantList;
+        }
 
-            //var restaurants = _restaurantRepository.GetAllRestaurants();
-            //ListRestaurantForListVm result = new ListRestaurantForListVm();
-            //result.Restaurants = new List<RestaurantForListVm>();
+        public RestaurantEditVm GetRestaurantById(int restaurantId)
+        {
+            var restaurant = _restaurantRepository.GetRestaurantById(restaurantId);
+            var restrautntVm = _mapper.Map<RestaurantEditVm>(restaurant);
 
-            //foreach (var restaurant in restaurants)
-            //{
-            //    var restVm = new RestaurantForListVm()
-            //    {
-            //        Id = restaurant.Id,
-            //        Name = restaurant.Name
-            //    };
-            //    result.Restaurants.Add(restVm);
-            //}
-            //return result;
+            return restrautntVm;
         }
 
         public RestaurantDetailsVm GetRestaurantDetails(int restaurantId)
@@ -72,6 +65,12 @@ namespace RaterestaurantMVC.Application.Services
             var restaurantVm = _mapper.Map<RestaurantDetailsVm>(restaurant);
 
             return restaurantVm;
+        }
+
+        public void UpdateRestaurant(RestaurantEditVm model)
+        {
+            var restaurant = _mapper.Map<Restaurant>(model);
+            _restaurantRepository.UpdateRestaurant(restaurant);
         }
     }
 }

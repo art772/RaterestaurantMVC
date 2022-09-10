@@ -23,6 +23,20 @@ namespace RaterestaurantMVC.Application.Services
             _opinionRepository = opinionRepository;
             _mapper = mapper;
         }
+
+        public int AddOpinion(NewOpinionVm opinion)
+        {
+            var newOpinion = _mapper.Map<Opinion>(opinion);
+            var id = _opinionRepository.AddOpinion(newOpinion);
+
+            return id;
+        }
+
+        public void DeleteOpinion(int opinionId)
+        {
+            _opinionRepository.DeteleOpinion(opinionId);
+        }
+
         public ListOpinionForListVm GetRestaurantOpinions(int restaurantId)
         {
             var opinions = _opinionRepository.GetAllRestaurantOpinions(restaurantId)
@@ -36,19 +50,5 @@ namespace RaterestaurantMVC.Application.Services
 
             return opinionList;
         }
-        //public int AddOpinion(OpinionVm opinion)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void DeleteOpinion()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public ListOpinionForListVm GetAllOpinionsForList()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

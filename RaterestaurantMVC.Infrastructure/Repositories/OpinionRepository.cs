@@ -15,36 +15,29 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
         {
             _context = context;
         }
+
         public int AddOpinion(Opinion opinion)
         {
-            throw new NotImplementedException();
+            _context.Opinions.Add(opinion);
+            _context.SaveChanges();
+            return opinion.Id;
         }
 
-        public void DeleteOpinion(int opiniondId)
+        public void DeteleOpinion(int opinionId)
         {
-            throw new NotImplementedException();
+            //pobieram, spradzam, usuam, zapisuj
+            var opinion = _context.Opinions.Find(opinionId);
+            if (opinion != null)
+            {
+                _context.Opinions.Remove(opinion);
+                _context.SaveChanges();
+            }
         }
 
         public IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId)
         {
-            var opinions = _context.Opinions.Where(i => i.Id == restaurantId);
+            var opinions = _context.Opinions.Where(i => i.RestaurantId == restaurantId);
             return opinions;
-        }
-
-        public IQueryable<Opinion> GetAllUserOpinions(int userId)
-        {
-            var opinions = _context.Opinions.Where(i => i.Id == userId);
-            return opinions;
-        }
-
-        public Opinion GetOpinion(int opinionId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateOpinion(Opinion opinion)
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -10,10 +10,7 @@ namespace RaterestaurantMVC.Domain.Interfaces
     public interface IOpinionRepository
     {
         int AddOpinion(Opinion opinion);
-        void DeleteOpinion(int opiniondId);
-        IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId);
-        IQueryable<Opinion> GetAllUserOpinions(int userId);
-        Opinion GetOpinion(int opinionId);
-        void UpdateOpinion(Opinion opinion);
+        void DeteleOpinion(int opinionId);
+        IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId);        
     }
 }

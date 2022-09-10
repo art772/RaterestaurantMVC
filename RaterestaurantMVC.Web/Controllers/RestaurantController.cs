@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using RaterestaurantMVC.Application.Interfaces;
 using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Model;
-using System.Dynamic;
 
 namespace RaterestaurantMVC.Web.Controllers
 {
@@ -38,20 +37,66 @@ namespace RaterestaurantMVC.Web.Controllers
 
         [HttpPost]
         [Authorize(Roles = "SuperAdmin, Admin, Restaurator")]
-        public IActionResult AddRestaurant(NewRestaurantVm model)
+        public async Task<IActionResult> AddRestaurant(NewRestaurantVm model)
         {
             model.UserId = Int32.Parse(_userManager.GetUserId(User));
+            
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    model.RestaurantPicture = dataStream.ToArray();
+                }
+            }
+
             _restaurantService.AddRestaurant(model);
+            
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult ViewRestaurant(int id)
         {
+            ViewBag.Id = id;
             var model = _restaurantService.GetRestaurantDetails(id);
             model.Opinions = _opinionService.GetRestaurantOpinions(id);
 
             return View(model);
+        }
+
+        public IActionResult DeleteRestaurant(int id)
+        {
+           _restaurantService.DeleteRestaurant(id);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult EditRestaurant(int id)
+        {
+            var model = _restaurantService.GetRestaurantById(id);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditRestaurant(RestaurantEditVm model)
+        {
+            if (Request.Form.Files.Count > 0)
+            {
+                IFormFile file = Request.Form.Files.FirstOrDefault();
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    model.RestaurantPicture = dataStream.ToArray();
+                }
+            }
+
+            _restaurantService.UpdateRestaurant(model);
+
+            return RedirectToAction("ViewRestaurant", new { id = model.Id });
         }
     }
 }

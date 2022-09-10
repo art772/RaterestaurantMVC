@@ -1,34 +1,89 @@
-﻿@{
+﻿
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<!-- Portfolio Section-->
+<!-- Slider -->
 
-<section id="restaurants">
-    <h1>Polecane restauracje</h1>
+<section class="masthead">
     <div class="container">
-        <div class="row">
-            <div>Restauracja 1</div>
+        <div class="masthead-subheading">Welcome To Our Studio!</div>
+        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
+    </div>
+</section>
+
+<!-- Info box -->
+
+<section class="page-section" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Jak oceniać?</h2>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Załóż konto</h4>
+                <p class="text-muted">Załóż konto jako zwykły użytkownik, możesz wtedy przeglądać restauracje i dodawać do nich opinie lub załóż konto jako restaurator, a będziesz mógł dodać swoją restaurację.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Znajdź restaurację</h4>
+                <p class="text-muted">Na liście restauracji poszukaj restaurację, którą chcesz ocenić i wejdź w jej kartę.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="my-3">Zostaw opinię</h4>
+                <p class="text-muted">Po wejściu w kartę restauracji, pod opisem znajduje się formularz do oceny. Pamiętaj, że kazdą restaurację możesz ocenić tylko raz.</p>
+            </div>
         </div>
     </div>
 </section>
 
- <!-- About Section-->
 
-<section id="about-us">
-    <h1>O nas</h1>
+<!-- Portfolio Section-->
+
+<section class="page-section bg-light" id="portfolio">
     <div class="container">
-        Jesteś głodny? Jest weekend? Nie wiesz skąd zamówić jedziesz?
-        <br />
-        My wiemy! Sprawdź opinię o restauracjach w swojeji okolicy i wybierz swoją ulubiona.
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Najlepiej oceniane restauracje</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 mb-3">
+                <!-- Portfolio item 1-->
+                <div class="portfolio-item">
+                    <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
+                        <div class="portfolio-hover">
+                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                        </div>
+                        <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
+                    </a>
+                    <div class="portfolio-caption">
+                        <div class="portfolio-caption-heading">Threads</div>
+                        <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- Contact Section-->
+<!-- Contact -->
 
-<section id="contact">
-    <h1>Kontakt</h1>
+<section class="page-section" id="contact">
     <div class="container">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida eros elit. Nullam scelerisque accumsan faucibus. Vestibulum aliquam faucibus feugiat. Integer vitae vehicula ex. Nunc sollicitudin convallis sapien, id rutrum ex ultricies at. Proin egestas nulla vitae ligula congue interdum. Fusce ac mi at leo mollis blandit. Donec molestie, dui at rhoncus luctus, diam ex interdum arcu, nec ullamcorper metus nisi in ante. Sed ultricies ipsum in egestas pharetra. Aliquam et eros sed augue laoreet accumsan. Morbi pulvinar tristique turpis, at sollicitudin ipsum finibus nec. In ut odio eget quam hendrerit commodo at ut massa. Fusce luctus dolor sit amet dolor ullamcorper dapibus. Morbi at justo et lorem elementum viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis iaculis justo nibh, ut interdum eros maximus eget. Nulla a libero lectus. Mauris placerat arcu vitae vehicula posuere. Sed feugiat quis arcu a tincidunt. Suspendisse bibendum elit in gravida lacinia. Duis dolor ligula, eleifend vel lorem sit amet, venenatis porttitor odio. Suspendisse ac placerat odio. In lacinia massa at tellus aliquam porta. Fusce in vehicula ante, vel varius nisl. Fusce in porttitor ligula. Pellentesque nec malesuada lacus, vel rutrum sapien. Quisque ornare quam ut lectus iaculis lobortis. Mauris vel eros fermentum mi laoreet consequat. Curabitur vulputate massa justo. Nullam vulputate lectus vitae iaculis porttitor. Phasellus suscipit justo sed lorem lobortis, in pretium lacus vestibulum. Maecenas lacinia tortor turpis, quis pretium velit accumsan in. Nulla facilisi. Duis at neque lobortis, tempor purus in, pharetra quam. Fusce laoreet ante ac justo elementum varius. In hac habitasse platea dictumst.
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Kontakt</h2>
+        </div>
     </div>
 </section>

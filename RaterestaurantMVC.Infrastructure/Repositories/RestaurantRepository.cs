@@ -61,7 +61,18 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
 
         public void UpdateRestaurant(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            _context.Attach(restaurant);
+            _context.Entry(restaurant).Property("Name").IsModified = true;
+            _context.Entry(restaurant).Property("Street").IsModified = true;
+            _context.Entry(restaurant).Property("BuildingNumber").IsModified = true;
+            _context.Entry(restaurant).Property("FlatNumber").IsModified = true;
+            _context.Entry(restaurant).Property("ZipCode").IsModified = true;
+            _context.Entry(restaurant).Property("City").IsModified = true;
+            _context.Entry(restaurant).Property("Email").IsModified = true;
+            _context.Entry(restaurant).Property("PhoneNumberFirst").IsModified = true;
+            _context.Entry(restaurant).Property("PhoneNumberSecond").IsModified = true;
+            _context.Entry(restaurant).Property("RestaurantPicture").IsModified = true;
+            _context.SaveChanges();
         }
     }
 }

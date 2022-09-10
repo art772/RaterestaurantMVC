@@ -1,4 +1,5 @@
 ﻿using RaterestaurantMVC.Application.ViewModels.Opinion;
+using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,8 @@ namespace RaterestaurantMVC.Application.Interfaces
 {
     public interface IOpinionService
     {
+        int AddOpinion(NewOpinionVm opinion);
+        void DeleteOpinion(int opinionId);
         ListOpinionForListVm GetRestaurantOpinions(int restaurantId);
-
-        //OpinionForListVm GetRestaurantOpinions(int restaurantId);
-        //int AddOpinion(OpinionVm opinion);
-        //void DeleteOpinion();
     }
 }

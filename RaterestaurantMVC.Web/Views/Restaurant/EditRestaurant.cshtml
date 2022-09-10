@@ -1,0 +1,84 @@
+﻿@model RaterestaurantMVC.Application.ViewModels.Restaurant.RestaurantEditVm
+
+@{
+    ViewData["Title"] = "EditRestaurant";
+}
+
+<h1>Edit Restaurant</h1>
+
+<hr />
+<div class="row">
+    <form asp-action="EditRestaurant" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingNumber" class="control-label"></label>
+                <input asp-for="BuildingNumber" class="form-control" />
+                <span asp-validation-for="BuildingNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatNumber" type="text" class="control-label"></label>
+                <input asp-for="FlatNumber" class="form-control" />
+                <span asp-validation-for="FlatNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumberFirst" class="control-label"></label>
+                <input asp-for="PhoneNumberFirst" type="tel" class="form-control" />
+                <span asp-validation-for="PhoneNumberFirst" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumberSecond" class="control-label"></label>
+                <input asp-for="PhoneNumberSecond" type="tel" class="form-control" />
+                <span asp-validation-for="PhoneNumberSecond" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RestaurantPicture" class="control-label"></label>
+                <input asp-for="RestaurantPicture" type="file" accept=".png,.jpg" class="form-control" />
+                <span asp-validation-for="RestaurantPicture" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
