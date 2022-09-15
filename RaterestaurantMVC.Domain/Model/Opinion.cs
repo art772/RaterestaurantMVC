@@ -23,6 +23,6 @@ namespace RaterestaurantMVC.Domain.Model
         public virtual Restaurant Restaurant { get; set; }
 
         // Jedna Opinia może mieć jedną Odpowiedź
-        public Reply ?Reply { get; set; }
+        public Reply? Reply { get; set; }
     }
 }

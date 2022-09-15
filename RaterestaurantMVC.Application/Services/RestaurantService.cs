@@ -1,28 +1,25 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Http;
 using RaterestaurantMVC.Application.Interfaces;
 using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Interfaces;
 using RaterestaurantMVC.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace RaterestaurantMVC.Application.Services
 {
     public class RestaurantService : IRestaurantService
     {
         private readonly IRestaurantRepository _restaurantRepository;
-        private readonly IOpinionRepository _opinionRepository;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public RestaurantService(IRestaurantRepository restaurantRepository, IOpinionRepository opinionRepository, IMapper mapper)
+        public RestaurantService(IRestaurantRepository restaurantRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _restaurantRepository = restaurantRepository;
-            _opinionRepository = opinionRepository;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public int AddRestaurant(NewRestaurantVm restaurant)
@@ -34,7 +31,14 @@ namespace RaterestaurantMVC.Application.Services
 
         public void DeleteRestaurant(int restaurantId)
         {
-            _restaurantRepository.DeleteRestaurant(restaurantId);
+            var userId = Int32.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var restaurant = _restaurantRepository.GetRestaurantById(restaurantId);
+            
+            if (userId == restaurant.UserId)
+            {
+                _restaurantRepository.DeleteRestaurant(restaurantId);
+            }
+            
         }
 
         public ListRestaurantForListVm GetAllRestaurants()

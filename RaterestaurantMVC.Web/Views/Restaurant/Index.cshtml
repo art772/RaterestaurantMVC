@@ -12,6 +12,13 @@
     </p>
 }
 
+@if (TempData["success"] != null) {
+    <div class="alert alert-success" role="alert">
+        @TempData["success"]
+    </div>
+}
+
+
 <table class="table">
     <thead>
         <tr>

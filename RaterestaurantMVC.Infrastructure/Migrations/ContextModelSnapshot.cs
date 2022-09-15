@@ -465,7 +465,7 @@ namespace RaterestaurantMVC.Infrastructure.Migrations
                     b.HasOne("RaterestaurantMVC.Domain.Model.Opinion", "Opinion")
                         .WithOne("Reply")
                         .HasForeignKey("RaterestaurantMVC.Domain.Model.Reply", "OpinionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Opinion");

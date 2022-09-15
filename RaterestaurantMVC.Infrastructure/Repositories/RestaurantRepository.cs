@@ -72,6 +72,7 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             _context.Entry(restaurant).Property("PhoneNumberFirst").IsModified = true;
             _context.Entry(restaurant).Property("PhoneNumberSecond").IsModified = true;
             _context.Entry(restaurant).Property("RestaurantPicture").IsModified = true;
+            //_context.Restaurants.Update(restaurant);
             _context.SaveChanges();
         }
     }

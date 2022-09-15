@@ -32,6 +32,11 @@ namespace RaterestaurantMVC.Application.Services
             return id;
         }
 
+        public void DeleteAllRestaurantOpinion(int restaurantId)
+        {
+            _opinionRepository.DeleteAllRestaurantOpinion(restaurantId);
+        }
+
         public void DeleteOpinion(int opinionId)
         {
             _opinionRepository.DeteleOpinion(opinionId);

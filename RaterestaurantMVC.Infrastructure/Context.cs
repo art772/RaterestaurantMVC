@@ -15,7 +15,7 @@ namespace RaterestaurantMVC.Infrastructure
     {
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Opinion> Opinions{ get; set; }
-        public DbSet<Reply> Replies{ get; set; }
+        public DbSet<Reply> Replies { get; set; }
         public DbSet<Restaurant> Restaurants{ get; set; }
         public DbSet<RestaurantType> RestaurantType { get; set; }
         public DbSet<Type> Types { get; set; }
@@ -29,6 +29,11 @@ namespace RaterestaurantMVC.Infrastructure
             base.OnModelCreating(builder);
 
             /*
+             * Jeden do wielu
+             */
+
+
+            /*
              * 1 do 1 
              */
 
@@ -37,8 +42,8 @@ namespace RaterestaurantMVC.Infrastructure
             builder.Entity<Opinion>()
                 .HasOne(a => a.Reply)
                 .WithOne(b => b.Opinion)
-                .HasForeignKey<Reply>(a => a.OpinionId);
-
+                .HasForeignKey<Reply>(a => a.OpinionId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             /*
              * Wiele do wielu
@@ -58,7 +63,6 @@ namespace RaterestaurantMVC.Infrastructure
                 .HasOne<Type>(rt => rt.Type)
                 .WithMany(r => r.RestaurantTypes)
                 .HasForeignKey(rt => rt.TypeId);
-
         }
     }
 }

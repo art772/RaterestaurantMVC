@@ -23,9 +23,20 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             return opinion.Id;
         }
 
+        public void DeleteAllRestaurantOpinion(int restaurantId)
+        {
+            List<Opinion> opinions = _context.Opinions.Where(o => o.RestaurantId == restaurantId).ToList();
+            foreach (var opinion in opinions)
+            {
+                _context.Remove(opinion);
+            }
+            _context.SaveChanges();
+
+        }
+
         public void DeteleOpinion(int opinionId)
         {
-            //pobieram, spradzam, usuam, zapisuj
+            //pobieram, spradzam, usuwam, zapisuj
             var opinion = _context.Opinions.Find(opinionId);
             if (opinion != null)
             {

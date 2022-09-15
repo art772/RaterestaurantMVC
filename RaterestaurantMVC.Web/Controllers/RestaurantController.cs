@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RaterestaurantMVC.Application.Interfaces;
@@ -68,8 +67,11 @@ namespace RaterestaurantMVC.Web.Controllers
 
         public IActionResult DeleteRestaurant(int id)
         {
-           _restaurantService.DeleteRestaurant(id);
+            _opinionService.DeleteAllRestaurantOpinion(id);
+            _restaurantService.DeleteRestaurant(id);
 
+            TempData["success"] = "Restauracja została usunięta";
+            
             return RedirectToAction("Index");
         }
 

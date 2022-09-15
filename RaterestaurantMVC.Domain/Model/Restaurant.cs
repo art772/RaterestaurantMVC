@@ -31,7 +31,7 @@ namespace RaterestaurantMVC.Domain.Model
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         // Jedna Restauracja może mieć wiele Opinii
-        public virtual ICollection<Opinion> ?Opinions { get; set; }
+        public virtual ICollection<Opinion> Opinions { get; set; }
 
         // Jedna Restauracja może mieć wiele Typów 
         public ICollection<RestaurantType> RestaurantTypes { get; set; }
