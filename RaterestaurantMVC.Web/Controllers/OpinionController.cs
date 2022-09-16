@@ -12,11 +12,13 @@ namespace RaterestaurantMVC.Web.Controllers
     public class OpinionController : Controller
     {
         private readonly IOpinionService _opinionService;
+        private readonly IRestaurantService _restaurantService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public OpinionController(IOpinionService opinionService, UserManager<ApplicationUser> userManager)
+        public OpinionController(IOpinionService opinionService, IRestaurantService restaurantService, UserManager<ApplicationUser> userManager)
         {
             _opinionService = opinionService;
+            _restaurantService = restaurantService;
             _userManager = userManager;
         }
 
@@ -26,6 +28,7 @@ namespace RaterestaurantMVC.Web.Controllers
         {
             model.UserId = Int32.Parse(_userManager.GetUserId(User));
             _opinionService.AddOpinion(model);
+            _restaurantService.UpdateRestaurantRate(model.Rate, model.RestaurantId);
 
             return RedirectToAction("ViewRestaurant", "Restaurant", new { id = model.RestaurantId });
         }

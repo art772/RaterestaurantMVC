@@ -76,5 +76,26 @@ namespace RaterestaurantMVC.Application.Services
             var restaurant = _mapper.Map<Restaurant>(model);
             _restaurantRepository.UpdateRestaurant(restaurant);
         }
+
+        public void UpdateRestaurantRate(int rate, int restaurantId)
+        {
+            var restaurant = _restaurantRepository.GetRestaurantById(restaurantId);
+
+            if (restaurant.RateSum == null)
+            {
+                restaurant.RateSum = 0;
+            }
+
+            if (restaurant.RateCount == null)
+            {
+                restaurant.RateCount = 0;
+            }
+
+            restaurant.RateSum = restaurant.RateSum + rate;
+            restaurant.RateCount = restaurant.RateCount + 1;
+            restaurant.AvgRate = Convert.ToDouble(restaurant.RateSum / restaurant.RateCount);
+
+            _restaurantRepository.UpdateRestaurantRate(restaurant);
+        }
     }
 }

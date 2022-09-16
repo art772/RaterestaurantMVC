@@ -17,10 +17,12 @@ namespace RaterestaurantMVC.Application.Services
     public class OpinionService : IOpinionService
     {
         private readonly IOpinionRepository _opinionRepository;
+        private readonly IRestaurantRepository _restaurantRepository;
         private readonly IMapper _mapper;
-        public OpinionService(IOpinionRepository opinionRepository, IMapper mapper)
+        public OpinionService(IOpinionRepository opinionRepository, IRestaurantRepository restaurantRepository, IMapper mapper)
         {
             _opinionRepository = opinionRepository;
+            _restaurantRepository = restaurantRepository;
             _mapper = mapper;
         }
 
@@ -28,6 +30,7 @@ namespace RaterestaurantMVC.Application.Services
         {
             var newOpinion = _mapper.Map<Opinion>(opinion);
             var id = _opinionRepository.AddOpinion(newOpinion);
+
 
             return id;
         }

@@ -20,6 +20,7 @@ namespace RaterestaurantMVC.Application.ViewModels.Restaurant
         public string? PhoneNumberFirst { get; set; }
         public string? PhoneNumberSecond { get; set; }
         public byte[]? RestaurantPicture { get; set; }
+        public int UserId { get; set; }
 
         public void Mapping(MappingProfile profile)
         {

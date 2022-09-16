@@ -7,10 +7,13 @@
 <h1>Edit Restaurant</h1>
 
 <hr />
-<div class="row">
-    <form asp-action="EditRestaurant" enctype="multipart/form-data">
+<form asp-action="EditRestaurant" enctype="multipart/form-data">
+    <div class="row">
         <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="UserId" type="hidden" />
+            </div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -60,8 +63,16 @@
         <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="RestaurantPicture" class="control-label"></label>
-                <input asp-for="RestaurantPicture" type="file" accept=".png,.jpg" class="form-control" />
+                <label asp-for="RestaurantPicture" style="width: 100%"></label>
+                @if (Model.RestaurantPicture != null)
+                {
+                    <img id="profilePicture" width="636"; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(Model.RestaurantPicture))">
+                }
+                <input type="file"
+                       accept=".png,.jpg,.jpeg,.gif,.tif"
+                       asp-for="RestaurantPicture"
+                       class="form-control"
+                       style="border:0px!important;padding: 0px;padding-top: 10px;padding-bottom: 30px;" />
                 <span asp-validation-for="RestaurantPicture" class="text-danger"></span>
             </div>
         </div>
@@ -70,8 +81,8 @@
                 <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>
