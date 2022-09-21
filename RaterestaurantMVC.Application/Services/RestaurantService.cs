@@ -71,6 +71,20 @@ namespace RaterestaurantMVC.Application.Services
             return restaurantVm;
         }
 
+        public ListRestaurantForListVm GetTopRatedRestaurantsWithLimit(int limit)
+        {
+            var restaurant = _restaurantRepository.GetRestaurantsWithLimit(4)
+                .ProjectTo<RestaurantForListVm>(_mapper.ConfigurationProvider).ToList();
+
+            var restaurantList = new ListRestaurantForListVm()
+            {
+                Restaurants = restaurant,
+                Count = restaurant.Count
+            };
+
+            return restaurantList;
+        }
+
         public void UpdateRestaurant(RestaurantEditVm model)
         {
             var restaurant = _mapper.Map<Restaurant>(model);

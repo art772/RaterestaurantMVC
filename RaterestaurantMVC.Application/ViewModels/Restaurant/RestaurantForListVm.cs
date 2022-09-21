@@ -14,6 +14,7 @@ namespace RaterestaurantMVC.Application.ViewModels.Restaurant
         public string Name { get; set; }
         public string Adress { get; set; }
         public double AvgRate { get; set; }
+        public byte[] RestaurantPicture { get; set; }
 
         public void Mapping(MappingProfile profile)
         {

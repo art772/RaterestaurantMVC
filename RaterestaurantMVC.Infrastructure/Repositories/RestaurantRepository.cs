@@ -82,5 +82,11 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             _context.Restaurants.Update(restaurant);
             _context.SaveChanges();
         }
+
+        public IQueryable<Restaurant> GetRestaurantsWithLimit(int limit)
+        {
+            var restaurants = _context.Restaurants.OrderByDescending(r => r.AvgRate).Take(limit);
+            return restaurants;
+        }
     }
 }

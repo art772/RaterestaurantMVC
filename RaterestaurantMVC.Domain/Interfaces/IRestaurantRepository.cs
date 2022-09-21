@@ -18,5 +18,6 @@ namespace RaterestaurantMVC.Domain.Interfaces
         IQueryable<Restaurant> GetRestaurantsByTypeId(int typeId);
         void UpdateRestaurant(Restaurant restaurant);
         void UpdateRestaurantRate(Restaurant restaurant);
+        IQueryable<Restaurant> GetRestaurantsWithLimit(int limit);
     }
 }

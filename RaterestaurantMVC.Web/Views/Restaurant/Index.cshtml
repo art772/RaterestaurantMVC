@@ -22,9 +22,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 Id
-            </th>
+            </th>*@
             <th>
                 Nazwa
             </th>
@@ -40,9 +40,9 @@
     <tbody>
 @foreach (var item in Model.Restaurants) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.AvgRate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditRestaurant", new { id=item.Id }) |
+                @*@Html.ActionLink("Edit", "EditRestaurant", new { id=item.Id }) |*@
                 @Html.ActionLink("Details", "ViewRestaurant", new { id=item.Id }) |
                 @Html.ActionLink("Delete", "DeleteRestaurant", new { id=item.Id })
             </td>
