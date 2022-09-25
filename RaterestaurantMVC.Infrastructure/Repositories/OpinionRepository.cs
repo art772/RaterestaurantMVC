@@ -50,5 +50,11 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             var opinions = _context.Opinions.Where(i => i.RestaurantId == restaurantId);
             return opinions;
         }
+
+        public IQueryable<Opinion> GetOpinionsByUserId(int userId)
+        {
+            var opinions = _context.Opinions.Where(o => o.UserId == userId);
+            return opinions;
+        }
     }
 }

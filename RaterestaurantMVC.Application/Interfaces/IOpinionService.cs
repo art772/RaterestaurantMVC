@@ -14,6 +14,7 @@ namespace RaterestaurantMVC.Application.Interfaces
         int AddOpinion(NewOpinionVm opinion);
         void DeleteOpinion(int opinionId);
         void DeleteAllRestaurantOpinion(int restaurantId);
+        ListOpinionForListVm GetOpinionsByUserId(int userId);
         ListOpinionForListVm GetRestaurantOpinions(int restaurantId);
     }
 }

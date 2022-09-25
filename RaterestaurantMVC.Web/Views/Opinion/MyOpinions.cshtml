@@ -1,0 +1,44 @@
+﻿@model RaterestaurantMVC.Application.ViewModels.Opinion.ListOpinionForListVm
+
+@{
+    ViewData["Title"] = "Moje opinie";
+}
+
+<h1>Moje opinie</h1>
+
+@if (Model.Opinions.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nazwa
+                </th>
+                <th>
+                    Średnia ocena
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Opinions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Details", "ViewRestaurant", "Restaurant", new { id=item.RestaurantId })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nie dodałeś/aś jeszcze żadnej opinii</p>
+}

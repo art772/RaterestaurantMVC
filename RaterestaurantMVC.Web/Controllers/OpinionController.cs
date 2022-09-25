@@ -40,5 +40,13 @@ namespace RaterestaurantMVC.Web.Controllers
 
             return RedirectToAction("Index", "Restaurant");
         }
+
+        public IActionResult MyOpinions()
+        {
+            var userId = Int32.Parse(_userManager.GetUserId(User));
+            var model = _opinionService.GetOpinionsByUserId(userId);
+
+            return View(model);
+        }
     }
 }

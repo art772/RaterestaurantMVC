@@ -183,6 +183,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/art77/source/repos/RaterestaurantMVC/RaterestaurantMVC.Web/Views/Opinion/MyOpinions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3BpbmlvblxNeU9waW5pb25zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/art77/source/repos/RaterestaurantMVC/RaterestaurantMVC.Web/Views/Restaurant/AddRestaurant.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxBZGRSZXN0YXVyYW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -193,6 +197,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/art77/source/repos/RaterestaurantMVC/RaterestaurantMVC.Web/Views/Restaurant/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/art77/source/repos/RaterestaurantMVC/RaterestaurantMVC.Web/Views/Restaurant/MyRestaurants.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzdGF1cmFudFxNeVJlc3RhdXJhbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/art77/source/repos/RaterestaurantMVC/RaterestaurantMVC.Web/Views/Restaurant/ViewRestaurant.cshtml]

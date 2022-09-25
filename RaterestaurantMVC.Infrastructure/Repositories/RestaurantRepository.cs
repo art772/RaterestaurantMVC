@@ -88,5 +88,11 @@ namespace RaterestaurantMVC.Infrastructure.Repositories
             var restaurants = _context.Restaurants.OrderByDescending(r => r.AvgRate).Take(limit);
             return restaurants;
         }
+
+        public IQueryable<Restaurant> GetRestaurantByUserId(int userId)
+        {
+            var restaurants = _context.Restaurants.Where(r => r.UserId == userId).OrderBy(r => r.Name);
+            return restaurants;
+        }
     }
 }

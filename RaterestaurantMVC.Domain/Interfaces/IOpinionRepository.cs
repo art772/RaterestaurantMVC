@@ -12,6 +12,7 @@ namespace RaterestaurantMVC.Domain.Interfaces
         int AddOpinion(Opinion opinion);
         void DeteleOpinion(int opinionId);
         void DeleteAllRestaurantOpinion(int restaurantId);
-        IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId);        
+        IQueryable<Opinion> GetAllRestaurantOpinions(int restaurantId);
+        IQueryable<Opinion> GetOpinionsByUserId(int userId);
     }
 }

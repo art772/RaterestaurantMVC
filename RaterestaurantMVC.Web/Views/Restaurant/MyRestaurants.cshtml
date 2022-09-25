@@ -1,0 +1,66 @@
+﻿@model RaterestaurantMVC.Application.ViewModels.Restaurant.ListRestaurantForListVm
+
+@{
+    ViewData["Title"] = "My restaurants";
+}
+
+<h1>Index</h1>
+
+@if (User.IsInRole("SuperAdmin") || User.IsInRole("Restaurator"))
+{
+    <p>
+        <a asp-action="AddRestaurant">Create New</a>
+    </p>
+}
+
+@if (TempData["AddRestaurant"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["AddRestaurant"]
+    </div>
+}
+
+@if (TempData["DeleteRestaurant"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["DeleteRestaurant"]
+    </div>
+}
+
+@if (Model.Restaurants.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Nazwa
+                </th>
+                <th>
+                    Średnia ocena
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Restaurants)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AvgRate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "EditRestaurant", new { id=item.Id }) |
+                        @Html.ActionLink("Details", "ViewRestaurant", new { id=item.Id }) |
+                        @Html.ActionLink("Delete", "DeleteRestaurant", new { id=item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else {
+    <p>Nie masz jeszcze żadnych restauracji</p>
+}

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.UserSecrets;
 using RaterestaurantMVC.Application.Interfaces;
 using RaterestaurantMVC.Application.ViewModels.Restaurant;
 using RaterestaurantMVC.Domain.Model;
@@ -51,8 +52,10 @@ namespace RaterestaurantMVC.Web.Controllers
             }
 
             _restaurantService.AddRestaurant(model);
+
+            TempData["AddRestaurant"] = "Nowa restauracja została dodana";
             
-            return RedirectToAction("Index");
+            return RedirectToAction("MyRestaurants");
         }
 
         [HttpGet]
@@ -70,9 +73,9 @@ namespace RaterestaurantMVC.Web.Controllers
             _opinionService.DeleteAllRestaurantOpinion(id);
             _restaurantService.DeleteRestaurant(id);
 
-            TempData["success"] = "Restauracja została usunięta";
+            TempData["DeleteRestaurant"] = "Restauracja została usunięta";
             
-            return RedirectToAction("Index");
+            return RedirectToAction("MyRestaurants");
         }
 
         [HttpGet]
@@ -99,6 +102,15 @@ namespace RaterestaurantMVC.Web.Controllers
             _restaurantService.UpdateRestaurant(model);
 
             return RedirectToAction("ViewRestaurant", new { id = model.Id });
+        }
+
+        [Authorize(Roles = "Restaurator,SuperAdmin")]
+        public IActionResult MyRestaurants()
+        {
+            int userId = Int32.Parse(_userManager.GetUserId(User));
+            var model = _restaurantService.GetRestaurantsByUserId(userId);
+
+            return View(model);
         }
     }
 }

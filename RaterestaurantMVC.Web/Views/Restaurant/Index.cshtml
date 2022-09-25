@@ -6,25 +6,9 @@
 
 <h1>Index</h1>
 
-@if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin") || User.IsInRole("Restaurator")) {
-    <p>
-        <a asp-action="AddRestaurant">Create New</a>
-    </p>
-}
-
-@if (TempData["success"] != null) {
-    <div class="alert alert-success" role="alert">
-        @TempData["success"]
-    </div>
-}
-
-
 <table class="table">
     <thead>
         <tr>
-            @*<th>
-                Id
-            </th>*@
             <th>
                 Nazwa
             </th>
@@ -40,9 +24,6 @@
     <tbody>
 @foreach (var item in Model.Restaurants) {
         <tr>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -53,9 +34,7 @@
                 @Html.DisplayFor(modelItem => item.AvgRate)
             </td>
             <td>
-                @*@Html.ActionLink("Edit", "EditRestaurant", new { id=item.Id }) |*@
-                @Html.ActionLink("Details", "ViewRestaurant", new { id=item.Id }) |
-                @Html.ActionLink("Delete", "DeleteRestaurant", new { id=item.Id })
+                @Html.ActionLink("Details", "ViewRestaurant", new { id=item.Id })
             </td>
         </tr>
 }
