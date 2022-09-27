@@ -31,9 +31,12 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Restaurant" asp-action="MyRestaurants">Moje restauracje</a>
                             </li>
                         }
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Opinion" asp-action="MyOpinions">Moje opinie</a>
-                        </li>
+                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Restaurator") || User.IsInRole("User"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Opinion" asp-action="MyOpinions">Moje opinie</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
